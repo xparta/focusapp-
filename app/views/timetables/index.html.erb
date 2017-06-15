@@ -1,8 +1,14 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Focusapp</title>
-  
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Timetables</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
 <!DOCTYPE html>
 <html lang="en">
 	<head id="Head1"><title>
@@ -201,11 +207,17 @@ function __doPostBack(eventTarget, eventArgument) {
 </body>
 </html>
 
-  <%= csrf_meta_tags %>
-</head>
-<body>
+  <tbody>
+    <% @timetables.each do |timetable| %>
+      <tr>
+        <td><%= link_to 'Show', timetable %></td>
+        <td><%= link_to 'Edit', edit_timetable_path(timetable) %></td>
+        <td><%= link_to 'Destroy', timetable, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
 
-<%= yield %>
+<br>
 
-</body>
-</html>
+<%= link_to 'New Timetable', new_timetable_path %>
